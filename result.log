@@ -1,0 +1,68 @@
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app> kubectl get deployment -n lab4
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+my-pod-2   2/2     2            2           17m
+my-pod-3   3/3     3            3           3m9s
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app> kubectl get ingress -n lab4
+NAME           CLASS   HOSTS                ADDRESS        PORTS   AGE
+my-ingress-1   nginx   my-1.cluster.local   192.168.49.2   80      33m
+my-ingress-2   nginx   my-2.cluster.local   192.168.49.2   80      17m
+my-ingress-3   nginx   my-3.cluster.local   192.168.49.2   80      3m15s
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app> kubectl get service -n lab4
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+my-service-1   ClusterIP   10.110.234.90   <none>        80/TCP    34m
+my-service-2   ClusterIP   10.107.33.147   <none>        80/TCP    17m
+my-service-3   ClusterIP   10.105.215.27   <none>        80/TCP    3m19s
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app> kubectl get pod -n lab4
+NAME                        READY   STATUS    RESTARTS   AGE
+my-pod-1                    1/1     Running   0          35m
+my-pod-2-56b59d795b-spwwm   1/1     Running   0          15m
+my-pod-2-56b59d795b-v5wn9   1/1     Running   0          11m
+my-pod-3-7ff66b48b-79cfn    1/1     Running   0          68s
+my-pod-3-7ff66b48b-b6vpf    1/1     Running   0          3m43s
+my-pod-3-7ff66b48b-ssgpm    1/1     Running   0          68s
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app> kubectl get events -n lab4
+LAST SEEN   TYPE     REASON              OBJECT                           MESSAGE
+32m         Normal   Sync                ingress/my-ingress-1             Scheduled for sync
+17m         Normal   Sync                ingress/my-ingress-2             Scheduled for sync
+2m56s       Normal   Sync                ingress/my-ingress-3             Scheduled for sync
+35m         Normal   Scheduled           pod/my-pod-1                     Successfully assigned lab4/my-pod-1 to minikube
+35m         Normal   Pulling             pod/my-pod-1                     Pulling image "nginx:alpine"
+35m         Normal   Pulled              pod/my-pod-1                     Successfully pulled image "nginx:alpine" in 11.217s (11.217s including waiting). Image size: 53747275 bytes.
+35m         Normal   Created             pod/my-pod-1                     Created container: my-pod-1
+35m         Normal   Started             pod/my-pod-1                     Started container my-pod-1
+15m         Normal   Scheduled           pod/my-pod-2-56b59d795b-spwwm    Successfully assigned lab4/my-pod-2-56b59d795b-spwwm to minikube
+15m         Normal   Pulled              pod/my-pod-2-56b59d795b-spwwm    Container image "nginx:alpine" already present on machine
+15m         Normal   Created             pod/my-pod-2-56b59d795b-spwwm    Created container: nginx
+15m         Normal   Started             pod/my-pod-2-56b59d795b-spwwm    Started container nginx
+11m         Normal   Scheduled           pod/my-pod-2-56b59d795b-v5wn9    Successfully assigned lab4/my-pod-2-56b59d795b-v5wn9 to minikube
+11m         Normal   Pulled              pod/my-pod-2-56b59d795b-v5wn9    Container image "nginx:alpine" already present on machine
+11m         Normal   Created             pod/my-pod-2-56b59d795b-v5wn9    Created container: nginx
+11m         Normal   Started             pod/my-pod-2-56b59d795b-v5wn9    Started container nginx
+18m         Normal   Scheduled           pod/my-pod-2-56b59d795b-xmnxq    Successfully assigned lab4/my-pod-2-56b59d795b-xmnxq to minikube
+18m         Normal   Pulled              pod/my-pod-2-56b59d795b-xmnxq    Container image "nginx:alpine" already present on machine
+18m         Normal   Created             pod/my-pod-2-56b59d795b-xmnxq    Created container: nginx
+18m         Normal   Started             pod/my-pod-2-56b59d795b-xmnxq    Started container nginx
+15m         Normal   Killing             pod/my-pod-2-56b59d795b-xmnxq    Stopping container nginx
+18m         Normal   SuccessfulCreate    replicaset/my-pod-2-56b59d795b   Created pod: my-pod-2-56b59d795b-xmnxq
+15m         Normal   SuccessfulCreate    replicaset/my-pod-2-56b59d795b   Created pod: my-pod-2-56b59d795b-spwwm
+11m         Normal   SuccessfulCreate    replicaset/my-pod-2-56b59d795b   Created pod: my-pod-2-56b59d795b-v5wn9
+18m         Normal   ScalingReplicaSet   deployment/my-pod-2              Scaled up replica set my-pod-2-56b59d795b from 0 to 1
+11m         Normal   ScalingReplicaSet   deployment/my-pod-2              Scaled up replica set my-pod-2-56b59d795b from 1 to 2
+71s         Normal   Scheduled           pod/my-pod-3-7ff66b48b-79cfn     Successfully assigned lab4/my-pod-3-7ff66b48b-79cfn to minikube
+70s         Normal   Pulled              pod/my-pod-3-7ff66b48b-79cfn     Container image "nginx:alpine" already present on machine
+70s         Normal   Created             pod/my-pod-3-7ff66b48b-79cfn     Created container: nginx
+70s         Normal   Started             pod/my-pod-3-7ff66b48b-79cfn     Started container nginx
+3m46s       Normal   Scheduled           pod/my-pod-3-7ff66b48b-b6vpf     Successfully assigned lab4/my-pod-3-7ff66b48b-b6vpf to minikube
+3m45s       Normal   Pulled              pod/my-pod-3-7ff66b48b-b6vpf     Container image "nginx:alpine" already present on machine
+3m45s       Normal   Created             pod/my-pod-3-7ff66b48b-b6vpf     Created container: nginx
+3m45s       Normal   Started             pod/my-pod-3-7ff66b48b-b6vpf     Started container nginx
+71s         Normal   Scheduled           pod/my-pod-3-7ff66b48b-ssgpm     Successfully assigned lab4/my-pod-3-7ff66b48b-ssgpm to minikube
+70s         Normal   Pulled              pod/my-pod-3-7ff66b48b-ssgpm     Container image "nginx:alpine" already present on machine
+70s         Normal   Created             pod/my-pod-3-7ff66b48b-ssgpm     Created container: nginx
+70s         Normal   Started             pod/my-pod-3-7ff66b48b-ssgpm     Started container nginx
+3m46s       Normal   SuccessfulCreate    replicaset/my-pod-3-7ff66b48b    Created pod: my-pod-3-7ff66b48b-b6vpf
+71s         Normal   SuccessfulCreate    replicaset/my-pod-3-7ff66b48b    Created pod: my-pod-3-7ff66b48b-79cfn
+71s         Normal   SuccessfulCreate    replicaset/my-pod-3-7ff66b48b    Created pod: my-pod-3-7ff66b48b-ssgpm
+3m46s       Normal   ScalingReplicaSet   deployment/my-pod-3              Scaled up replica set my-pod-3-7ff66b48b from 0 to 1
+71s         Normal   ScalingReplicaSet   deployment/my-pod-3              Scaled up replica set my-pod-3-7ff66b48b from 1 to 3
+PS C:\Users\coolt\source\repos\cis-lab4-2025\helm\my-app>
