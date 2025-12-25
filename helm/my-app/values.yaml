@@ -1,0 +1,38 @@
+nameOverride: "my-pod-3"
+fullnameOverride: ""
+
+namespace: lab4
+
+image:
+  repository: nginx
+  tag: alpine
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  name: my-service-3
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  name: my-ingress-3
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: my-3.cluster.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
